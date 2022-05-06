@@ -1,0 +1,107 @@
+public class Solution {
+
+/*	Binary Tree Node class
+ * 
+ * class BinaryTreeNode<T> {
+		T data;
+		BinaryTreeNode<T> left;
+		BinaryTreeNode<T> right;
+		
+		public BinaryTreeNode(T data) {
+			this.data = data;
+		}
+	}
+	*/
+
+
+	public static void printNodesSumToS(BinaryTreeNode<Integer> root, int sum) {
+        
+        ArrayList<Integer> list=new ArrayList<>();
+        convert(root,list);
+        if(list==null ){
+            return;
+        }
+        Collections.sort(list);
+        int i=0;
+        int j=list.size()-1;
+        
+        while(i<j){
+        if(list.get(i)+list.get(j)==sum){
+            if(list.get(i)<list.get(j)){
+                System.out.println(list.get(i)+" "+list.get(j));
+                
+            }else{
+                System.out.println(list.get(j)+" "+list.get(i));
+            }
+            i++;j--;
+        }else if(list.get(i)+list.get(j)<sum){
+            i++;
+        }else{
+            j--;
+        }
+        }
+    }
+    
+    public static void convert(BinaryTreeNode<Integer> root,ArrayList<Integer> list){
+        if(root==null)
+            return;
+        list.add(root.data);
+        convert(root.left,list);
+        convert(root.right,list);
+        
+    }
+    
+    
+    
+//     public static void printPairs(BinaryTreeNode<Integer> currNode,BinaryTreeNode<Integer> root,int sum){
+
+//         if(currNode==null){
+//             return;
+//         }
+//         if(currNode.data<sum){
+            
+//         if(currNode.data!=Integer.MIN_VALUE){
+//             int diff=sum-currNode.data;
+//             boolean ans=find(root,diff,currNode);
+//             if(ans){
+//                 if(currNode.data<diff){
+//                     System.out.println(currNode.data+" "+diff);
+//                 }else{
+//                     System.out.println(diff+" "+currNode.data);
+//                 }
+//                 currNode.data=Integer.MIN_VALUE;
+                
+               
+//             }
+            
+        
+            
+//         }
+//         }
+        
+//             printPairs(currNode.left,root,sum);
+//             printPairs(currNode.right,root,sum);
+        
+//     }
+    
+//     public static boolean find(BinaryTreeNode<Integer> root,int n,BinaryTreeNode<Integer> currNode){
+//         if(root==null){
+//             return false;
+//         }
+//         if(root.data==n && root!=currNode){
+//             root.data=Integer.MIN_VALUE;
+//             return true;
+//         }
+        
+//         boolean ans=false;
+//         ans=find(root.left,n,currNode);  
+//         if(ans){
+//             return ans;
+//         }
+//         ans=find(root.right,n,currNode);
+//         return ans;
+                 
+//     } 
+
+}
+
